@@ -17,13 +17,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'yarn'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.0.6
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Build UI
-        run: yarn build
+        run: pnpm build
 
       - name: Create UI archive
         run: |
