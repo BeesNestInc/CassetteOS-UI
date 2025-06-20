@@ -1,0 +1,37 @@
+name: Release UI Package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build UI
+        run: yarn build
+
+      - name: Create UI archive
+        run: |
+          mkdir -p dist
+          tar -zcvf dist/linux-all-cassetteos-${{ github.ref_name }}.tar.gz build
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: dist/linux-all-cassetteos-${{ github.ref_name }}.tar.gz

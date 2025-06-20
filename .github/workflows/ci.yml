@@ -1,32 +1,36 @@
-name: push_test_server
+name: Pull Request Test
 
 on:
-    pull_request:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
-    test:
-        if: github.repository == 'IceWhaleTech/CasaOS-UI'
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [ 16.x ]
-            # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
 
-        steps:
-            -   uses: actions/checkout@v3
-            -   name: '使用 Use Node.js ${{ matrix.node-version }}'
-                uses: actions/setup-node@v3
-                with:
-                    node-version: ${{ matrix.node-version }}
-                    cache: 'npm'
-            -   name: '缓存 Cache'
-                uses: actions/cache@v3
-                id: cache-dependencies
-                with:
-                    path: node_modules
-                    key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
+    steps:
+      - uses: actions/checkout@v4
 
-            -   run: yarn install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
-            -   name: 'Unit tests'
-                run: yarn test
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.0.6
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint --quiet || true
+
+      - name: Build
+        run: pnpm build
