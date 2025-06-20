@@ -1,6 +1,6 @@
 {
-    "name": "CasaOS",
-    "short_name": "CasaOS",
+    "name": "CassetteOS",
+    "short_name": "CassetteOS",
     "icons": [{
             "src": "/img/icon/android-chrome-192x192.png",
             "sizes": "192x192",
