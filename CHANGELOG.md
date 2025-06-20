@@ -1,4 +1,4 @@
-## unreleased
+## v0.4.18-cs1.2.0 - 2025-06-20
 CassetteOS専用に調整
 - 表示テキストをCasaOSからCassetteOSに変更
 - GithubActionの整理
