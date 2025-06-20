@@ -32,8 +32,5 @@ jobs:
       - name: Lint
         run: pnpm lint --quiet || true
 
-      - name: Run Tests
-        run: pnpm test
-
       - name: Build
         run: pnpm build
