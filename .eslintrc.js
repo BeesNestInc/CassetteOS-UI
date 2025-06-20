@@ -1,5 +1,5 @@
 
-export default {
+module.exports =  {
   root: true,
   env: {
     node: true
@@ -9,7 +9,7 @@ export default {
     'eslint:recommended'
   ],
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "@babel/eslint-parser"
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

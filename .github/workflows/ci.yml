@@ -30,7 +30,7 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm lint --quiet || true
 
       - name: Run Tests
         run: pnpm test

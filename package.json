@@ -115,7 +115,6 @@
     "@vue/cli-plugin-router": "5.0.8",
     "@vue/cli-plugin-vuex": "5.0.8",
     "@vue/cli-service": "5.0.8",
-    "babel-eslint": "^10.1.0",
     "browserslist": "^4.21.9",
     "compression-webpack-plugin": "5.0.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
