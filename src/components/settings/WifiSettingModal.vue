@@ -57,7 +57,7 @@
 					{{ $t("WifiModeAccessPoint") }}
 				</label>
 				<label class="radio">
-					<input type="radio" value="client" v-model="selectedMode" />
+					<input type="radio" value="wifi-client" v-model="selectedMode" />
 					<b-icon class="ml-1 mr-1 pt-1 is-size-6" icon="wifi" pack="mdi" size="is-small" ></b-icon>
 					{{ $t("WifiModeClient") }}
 				</label>
@@ -66,11 +66,11 @@
 				<p class="help is-info mt-2" v-if="selectedMode === 'ap'">
 					{{ $t("WifiUpdateAccessPintDescription") }}
 				</p>
-				<p class="help is-info mt-2" v-else-if="selectedMode === 'client'">
+				<p class="help is-info mt-2" v-else-if="selectedMode === 'wifi-client'">
 					{{ $t("WifiUpdateWifiClientDescription") }}				
 				</p>
 			</div>
-			<div v-if="selectedMode === 'client'">
+			<div v-if="selectedMode === 'wifi-client'">
 				<b-field label="SSID">
 				<b-input v-model="ssid" :placeholder="$t('WifiUpdateSSIDInput')" />
 				</b-field>
