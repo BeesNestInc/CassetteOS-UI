@@ -38,7 +38,7 @@
 								<!-- Files End -->
 
 								<!-- Mounted Start -->
-								<div class="mounted-section">
+								<div class="mounted-section" v-if="false">
 									<div class="is-flex is-align-items-center">
 										<div class="is-flex-grow-1">
 											<h3 class="title is-3 mb-0 pb-3 pt-3 has-text-left">
@@ -62,7 +62,7 @@
 							<!-- Bottom Action Start -->
 							<div class="bottom-area">
 								<drop-entry-button :active="pageType == `drop`" :title="$t('FilesDrop')"
-									@open="showDropPage"></drop-entry-button>
+									@open="showDropPage" v-if="false"></drop-entry-button>
 								<share-entry-button :active="pageType == `share`"
 									@open="showSharedList"></share-entry-button>
 							</div>

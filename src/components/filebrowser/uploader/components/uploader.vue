@@ -90,12 +90,8 @@ export default {
 		filesSubmitted() {
 			this.files = this.uploader.files
 			this.fileList = this.uploader.fileList
-			this.$api.sys.getVersion().then(res => {
-				if (this.autoStart && res.status === 200) {
-					this.uploader.opts.headers.Authorization = this.$store.state.access_token || localStorage.getItem("access_token")
-					this.uploader.upload()
-				}
-			})
+			this.uploader.opts.headers.Authorization = this.$store.state.access_token || localStorage.getItem("access_token")
+			this.uploader.upload()
 		},
 		fileErrorHandle(rootFile, file, message) {
 			this.uploader.pause(file)
