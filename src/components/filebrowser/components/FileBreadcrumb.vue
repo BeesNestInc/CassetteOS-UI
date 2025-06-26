@@ -139,7 +139,7 @@ export default {
 				return {
 					name: item == "" ? "Root" : item,
 					show: true,
-					path: item == "" ? "/" : slice(arr, 0, index + 1).join("/")
+					path: item == "" ? "/" : "/" + slice(arr, 0, index + 1).join("/")
 				}
 			})
 			return collection
