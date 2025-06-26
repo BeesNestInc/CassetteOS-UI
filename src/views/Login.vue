@@ -81,6 +81,7 @@ export default {
 				if (versionRes.data.success == 200) {
 					localStorage.setItem("version", versionRes.data.data.current_version);
 				}*/
+				localStorage.setItem("version", "dummy");
 				this.$router.push("/");
 			} catch (err) {
 				this.message = this.$t(err.response.data.message)
