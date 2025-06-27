@@ -13,11 +13,11 @@
 
 			<div v-if="step == 1" class="has-text-centered">
 				<div v-animate-css="s1Ani" class=" is-flex is-justify-content-center">
-					<b-image :src="require('@/assets/img/logo/cassettleos-dark.svg')" class="is-128x128 mb-4"></b-image>
+					<img src="@/assets/img/logo/logo.svg" class="mb-4" style="width: 250px;" alt="logo" />
 				</div>
 
 				<h2 v-animate-css="s2Ani" class="title is-2 mb-5 has-text-centered __attached_title">{{
-						$t('Welcome to CasaOS')
+						$t('Welcome to CassetteOS')
 					}}</h2>
 				<h2 v-animate-css="s3Ani" class="subtitle  has-text-centered __attached_sub_title">{{
 						$t(`Let's create your initial account`)
@@ -275,6 +275,9 @@ export default {
 			border-color: transparent;
 		}
 
+		.logo-size1 img {
+			width: 250px;
+		}
 		.is-128x128 {
 			height: 96px;
 			width: 96px;
