@@ -1,7 +1,10 @@
 <template>
 	<div class="brand-bar is-flex is-align-items-flex-end has-text-white">
 		<figure class="image _is-136x26 mb-3">
-			<img alt="logo" srcset="../assets/img/logo/logo.svg, ../assets/img/logo/logo.png 1x">
+			<picture>
+				<source srcset="../assets/img/logo/logo.svg" type="image/svg+xml">
+				<img src="../assets/img/logo/logo.png" alt="logo" width="136" height="26">
+			</picture>
 		</figure>
 		<span v-if="false" class="intro-text ml-4">Made with ❤️ by IceWhale and YOU!</span>
 		<span v-if="false" class="window ml-4">
