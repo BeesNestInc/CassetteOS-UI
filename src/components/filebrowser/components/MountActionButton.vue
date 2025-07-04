@@ -59,19 +59,9 @@ export default {
 	},
 
 	created() {
-		this.getPlatformList()
 	},
 
 	methods: {
-		// get platforms list
-		async getPlatformList() {
-			try {
-				const res = await this.$api.driver.getDriverList()
-				this.platforms = res.data.data;
-			} catch (error) {
-				console.error(error)
-			}
-		},
 
 		// goto auth procress
 		auth(driver) {

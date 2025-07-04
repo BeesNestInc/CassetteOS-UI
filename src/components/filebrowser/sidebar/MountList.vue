@@ -45,11 +45,6 @@
 			<tree-list-item v-for="item in usbStorageList" :key="item.path" :isActive="isActive" :item="item"
 				iconName="eject" @rightIconClick="umountUsb"></tree-list-item>
 			<!-- USB List End -->
-
-			<!-- Cloud List Start -->
-			<tree-list-item v-for="item in cloudStorageList" :key="item.path" :iconType="item.icon_type"
-				:isActive="isActive" :item="item" iconName="eject" @rightIconClick="umountCloud"></tree-list-item>
-			<!-- Cloud List End -->
 		</div>
 		<b-loading v-model="isLoading" :is-full-page="false"></b-loading>
 	</div>
@@ -113,7 +108,7 @@ export default {
 			this.getLocalStorage();
 			// this.getUsbStorage()
 			this.getNetworkStorage();
-			this.getCloudStorage();
+			//this.getCloudStorage();
 		},
 		// Local Storage (include Mergerfs)
 		async getLocalStorage() {
@@ -262,47 +257,6 @@ export default {
 				console.log(error.reponse.message);
 			}
 		},
-		// Cloud Storage
-		async getCloudStorage() {
-			try {
-				const cloudRes = await this.$api.cloud.list();
-				this.cloudStorageList = cloudRes.data.data.map((storage) => {
-					return {
-						id: storage.fs,
-						name: storage.name,
-						icon: storage.icon,
-						icon_type: "svg",
-						pack: "casa",
-						path: storage.mount_point,
-						visible: true,
-						selected: true,
-						extensions: null,
-					};
-				});
-			} catch (error) {
-				console.log(error.reponse.message);
-			}
-		},
-
-		// umount cloud storage
-		umountCloud(item) {
-			this.$api.cloud
-				.umount({ mount_point: item.path })
-				.then(() => {
-					this.getStorageList();
-					this.goToDataFolder(item);
-					this.$buefy.toast.open({
-						message: this.$t("Eject Success"),
-						type: "is-success",
-					});
-				})
-				.catch(() => {
-					this.$buefy.toast.open({
-						message: this.$t("Eject Failed"),
-						type: "is-danger",
-					});
-				});
-		},
 
 		// umount usb storage
 		umountUsb(item) {
@@ -431,7 +385,6 @@ export default {
 			switch (status) {
 				case "warn":
 					toastType = "is-warning";
-					this.getCloudStorage();
 					break;
 				case "fail":
 					toastType = "is-danger";
@@ -445,7 +398,6 @@ export default {
 					} else if (driver === "OneDrive") {
 						this.$messageBus("files_addlocation_onedrive");
 					}
-					this.getCloudStorage();
 					break;
 			}
 			this.$buefy.toast.open({
