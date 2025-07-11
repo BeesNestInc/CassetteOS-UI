@@ -1,4 +1,4 @@
-## unreleased
+## v0.0.3
 - GitHubActionのリリースではPreReleseとして公開する
 - バージョン表示のバグを修正
 
