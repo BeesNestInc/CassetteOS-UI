@@ -412,7 +412,7 @@
   "launch-and-open": "起動して開く",
   "WifiSettings": "WiFi設定",
   "WifiCurrentStatus": "現在の状態",
-  "WifiApplayMessage": "🔄 Wi-Fi設定を適用中です。接続が一時的に切れることがあります。",
+  "WifiApplayMessage": "🔄 Wi-Fi設定を適用中です。",
   "WifiMode": "モード",
   "WifiModeAccessPoint": "アクセスポイント",
   "WifiModeClient": "WiFi接続中",

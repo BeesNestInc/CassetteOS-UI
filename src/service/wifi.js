@@ -10,6 +10,9 @@ const wifi = {
 	},
 	setupAP(){
 		return api.post(`${PREFIX}/wifi/ap-mode`);
+	},
+	getWifiAPSSID() {
+		return api.get(`${PREFIX}/wifi/ap-ssid`);
 	}
 }
 export default wifi;
