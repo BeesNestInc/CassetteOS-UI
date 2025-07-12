@@ -12,7 +12,8 @@
 		<section class="modal-card-body ">
 			<p class="sub-title">{{ $t("WifiCurrentStatus") }}</p>
 			<b-notification type="is-info" v-if="isSwitching">
-				{{ $t("WifiApplayMessage") }}
+				{{ $t("WifiApplayMessage") }}<br />
+				お使いの端末のWi-Fi設定から、「{{this.swithSSID}}」に接続し直してください。
 			</b-notification>
 			<dl v-if="!isSwitching">
 				<div>
@@ -121,11 +122,14 @@ export default {
 				ssid: "",
 				ip_address: ""
 			},
+			apSSID: "",
 			isSwitching: false,
+			swithSSID: "",
 			wifiStatusPoller: null,
 		};
 	},
 	mounted() {
+
 		this.fetchWifiStatus().then(status => {
 			this.selectedMode = status.mode;
 			this.ssid = status.ssid;
@@ -142,12 +146,18 @@ export default {
 			try {
 				this.isSwitching = true;
 				let res = null;
+				if ( this.selectedMode === 'ap' ){
+					this.swithSSID = this.apSSID;
+				}else{
+					this.swithSSID = this.ssid;
+				}
 				if ( this.selectedMode === 'ap'){
 					res = await this.$api.wifi.setupAP();
 				}else{
 					res = await this.$api.wifi.setupWiFi({ mode: this.selectedMode, ssid: this.ssid, password: this.password });
 				}
-				this.showMessage("設定を送信しました。数秒後に接続されるまでお待ちください。")
+				this.showMessage(`ℹ️ 設定を送信しました。`)
+
 			} catch (err) {
 				this.isSwitching = false;
 				this.showMessage("Wi-Fi設定に失敗しました。")
@@ -159,7 +169,7 @@ export default {
 			this.$buefy.toast.open({
 			message: message,
 			type: 'is-info',
-			duration: 5000,
+			duration: 10000,
 			position: 'is-bottom',
 			})
 		},
@@ -175,6 +185,8 @@ export default {
 					this.showMessage(`WiFiモードが「${res.data.mode}」に変わりました`);
 				}
 				this.wifiStatus = res.data;
+				const resap = await this.$api.wifi.getWifiAPSSID();
+				this.apSSID = resap.data;
 				return res.data;
 			} catch (err) {
 				console.error("WiFiステータス取得失敗", err);

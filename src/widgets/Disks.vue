@@ -122,9 +122,9 @@ export default {
 		"casaos:system:utilization"(res) {
 			let data = res.Properties
 			// DISK
-			this.getDiskInfo(JSON.parse(data.sys_disk))
+			//this.getDiskInfo(JSON.parse(data.sys_disk))
 			// USB
-			this.usbDisks = JSON.parse(data.sys_usb)
+			//this.usbDisks = JSON.parse(data.sys_usb)
 		}
 	}
 }
