@@ -1,4 +1,4 @@
-## unreleased
+## v0.0.6
 - DockerComposeファイルで環境変数がnullの場合に表示がおかしくなる不具合を修正
 - スライダー周りの調整
 
