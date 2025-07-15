@@ -392,8 +392,9 @@ export default {
           : Object.entries(composeServicesItemInput.environment)
         composeServicesItem.environment = envArray.map((item) => {
           const ii = typeof item === 'object' ? Array.from(item) : item.split('=')
+          const rawHostValue = ii[1] ?? ''
           return {
-            host: ii[1].replace(/"/g, ''),
+            host: rawHostValue.replace(/"/g, ''),
             container: ii[0],
           }
         })
@@ -896,9 +897,15 @@ export default {
           </b-field>
 
           <b-field :label="$t('Memory Limit')" class="mb-5">
-            <VueSlider :max="totalMemory" :min="memory_min" class="mx-2" :marks="true" :data="markData" :value="service.deploy.resources.limits.memory | duplexDisplay" @change="(v) => (service.deploy.resources.limits.memory = v)" />
-          </b-field>
+            <VueSlider
+                    v-model="service.deploy.resources.limits.memory"
+                    :max="totalMemory"
+                    :min="memory_min"
+                    :marks="true"
+                    :data="markData"
+                  />
 
+          </b-field>
           <b-field :label="$t('CPU Shares')">
             <b-select v-model="service.cpu_shares" :placeholder="$t('Select')" expanded>
               <option :value="10">
