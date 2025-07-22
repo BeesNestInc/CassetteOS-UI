@@ -1,3 +1,6 @@
+# CassetteOS-UI
+このリポジトリは CassetteOS のUIコンポーネントです。  
+
 # How to develop this project
 
 ## Prerequisites
