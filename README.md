@@ -1,3 +1,9 @@
+# CassetteOS-UI
+このリポジトリは CassetteOS のUIコンポーネントです。  
+
+このプロジェクトは IceWhaleTech の [CasaOS-UI](https://github.com/IceWhaleTech/CasaOS-UI) に基づいており、CassetteOS に対応するための調整および機能拡張を行っています。
+
+
 # How to develop this project
 
 ## Prerequisites
