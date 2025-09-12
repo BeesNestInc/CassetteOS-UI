@@ -490,7 +490,7 @@ export default {
 				if (val === oldValue) {
 					return;
 				}
-				const lang = val.includes("_") ? val : "en_us";
+				const lang = val.includes("_") ? val : "ja_jp";
 				this.$messageBus("dashboardsetting_language", lang);
 				this.setLang(lang);
 			},

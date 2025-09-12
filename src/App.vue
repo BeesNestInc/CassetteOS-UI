@@ -125,7 +125,7 @@ _____             _____ _____
 		 */
 		setInitLang() {
 			let lang = localStorage.getItem('lang') ? localStorage.getItem('lang') : this.getLangFromBrowser()
-			lang = lang.includes("_") ? lang : "en_us";
+			lang = lang.includes("_") ? lang : "ja_jp";
 			this.setLang(lang);
 		},
 		/**
