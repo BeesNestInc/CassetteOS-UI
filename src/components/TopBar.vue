@@ -282,7 +282,7 @@
 					</div>
 					<!-- Automount USB Drive End  -->
 					<!-- WiFi Settings Start -->
-					<div class="_is-large hover-effect _is-radius pr-2 mr-4 ml-4" v-if="enableWifiSetup">
+					<div class="_is-large hover-effect _is-radius pr-2 mr-4 ml-4">
 						<div class="is-flex is-align-items-center">
 							<div class="is-flex is-align-items-center is-flex-grow-1 _is-normal">
 								<b-icon class="mr-1 ml-1" icon="wifi" pack="mdi" custom-size="20px" ></b-icon>
@@ -465,7 +465,6 @@ export default {
 			showPower: false,
 			showPowerTitle: "",
 			showPowerMessage: "",
-			enableWifiSetup: false,
 		};
 	},
 	props: {
@@ -557,7 +556,6 @@ export default {
 		this.getUserInfo();
 		this.getUsbStatus();
 		this.getHardwareInfo();
-		this.getOptionInfo();
 	},
 
 	methods: {
@@ -770,13 +768,6 @@ export default {
 				props: {
 					changeLog: this.updateInfo.version.change_log,
 				},
-			});
-		},
-		getOptionInfo() {
-			console.log("****getOptionInfo")
-			this.$api.option.getOptionStatus().then((res) => {
-				this.enableWifiSetup = res.data;
-				console.log(res.data)
 			});
 		},
 		/*************************************************
