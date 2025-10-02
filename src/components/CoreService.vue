@@ -555,9 +555,7 @@ export default {
 
 <template>
   <Swiper ref="mySwiper" :options="swiperOptions">
-    <SwiperSlide v-for="(noticeCard, key) in noticesData" :key="key" :class="{ _singleWidth: showFullCard }">
-      <NoticeBlock :notice-data="noticeCard" :notice-type="key" @delete-notice="refreshNotice" />
-    </SwiperSlide>
+
     <SwiperSlide v-if="recommendShow">
       <SyncBlock />
     </SwiperSlide>
